@@ -1,4 +1,4 @@
-package Maxwell;
+package br.com.pi.the.icev.ed.projetofinal;
 
 public class Aresta {
     private Double peso;
