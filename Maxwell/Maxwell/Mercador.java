@@ -27,8 +27,7 @@ public class Mercador{
 
     @Override
     public String toString() {
-        return "Olá viajante!Seu poder atual é de: " + trocarMoedasPorPoder() + 
-        "Suas Moedas são de : " + verificarMoedas() + 
-        ", Você veio da Cidade: " + verificarCidadeAnterior();
+        return "Olá viajante!Seu poder atual é de: " + trocarMoedasPorPoder() + "Suas Moedas são de : " + verificarMoedas() + ", Você veio da Cidade: " + verificarCidadeAnterior();
     }
+
 }
