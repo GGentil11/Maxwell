@@ -6,18 +6,40 @@ public class Maxwell {
     private int moedas;
     private String cidadeAnterior;
     private int limitePoder;
+    private boolean isDead;
     private boolean missao_1;
     private boolean missao_2;
     private boolean missao_3;
+    private Cidade cidadeAtual;
 
     private Maxwell() {
     }
-
+    //Transforma Maxwell em uma instância única para todo o código
     public static Maxwell getInstance() {
         if (instance == null) {
             instance = new Maxwell();
         }
         return instance;
+    }
+    
+    public Cidade getCidadeAtual() {
+        return cidadeAtual;
+    }
+    public void setCidadeAtual(Cidade cidadeAtual) {
+        this.cidadeAtual = cidadeAtual;
+    }
+
+    public boolean isDead() {
+        if (getInstance().getMoedas() <= 0){
+            return true;
+        }
+        else if (getInstance().getPoder()>getInstance().getLimitePoder()){
+            return true;
+        }
+        return false;
+    }
+    public void setDead(boolean isDead) {
+        this.isDead = isDead;
     }
 
     public int getLimitePoder() {

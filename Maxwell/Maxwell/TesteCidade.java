@@ -2,11 +2,8 @@ package Maxwell;
 
 public class TesteCidade {
     private Grafo grafo = new Grafo();
-    public static void main(String[] args) {
-        TesteCidade cidades = new TesteCidade();
-        cidades.inicializarCidades();
-    }
-    private void inicializarCidades() {
+
+    void inicializarCidades() {
         Cidade ubud = new Cidade("Ubud", false);
         Cidade kingdomOfLegmod = new Cidade("Kingdom of Legmod", false);
         Cidade principalityOfNekikh = new Cidade("Principality of Nekikh", false);
