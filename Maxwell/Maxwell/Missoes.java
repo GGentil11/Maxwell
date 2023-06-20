@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 public class Missoes{;
     public static void verificarMissao(Cidade cidade){
+        //Verificar se a cidade possui alguma missão
         if(cidade.isMissao()){
             System.out.println("A cidade " + cidade.getNomeCidade() + "possui uma missão.");
+            //verifica se a missão ja foi aceita
             if (cidade.isMissaoAceita()) {
                 System.out.println("Você já aceitou essa missão anteriormente.");
                 return;
@@ -121,4 +123,3 @@ public class Missoes{;
         }
     }
 }   
-
