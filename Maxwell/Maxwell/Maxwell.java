@@ -48,12 +48,12 @@ public class Maxwell {
 
     public boolean isDead() {
         if (getInstance().getMoedas() <= 0) {
-            System.out.println("Morreu por pela  moeda");
+            System.out.println("Você ficou sem moedas. Tente novamente");
             return true;
 
         } else if (getInstance().getPoder() > getInstance().getLimitePoder()) {
 
-            System.out.println("Morreu pelo poder");
+            System.out.println("Seu poder excedeu o limite da joia e Maxwell não aguentou. Tente novamente");
             return true;
         }
         return false;
