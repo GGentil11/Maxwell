@@ -1,6 +1,6 @@
-package Maxwell;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Grafo {
@@ -17,7 +17,7 @@ public class Grafo {
         this.vertices.add(novoVertice);
     }
 
-    public void adicionarAresta(Double peso, Cidade dadoInicio, Cidade dadoFim) {
+    public void adicionarAresta(int peso, Cidade dadoInicio, Cidade dadoFim) {
         Cidade inicio = dadoInicio;
         Cidade fim = dadoFim;
         Aresta aresta = new Aresta(peso, inicio, fim);
@@ -47,23 +47,38 @@ public class Grafo {
             fila.remove(0);
         }
     }
-    public void buscaCorreta(Cidade cidade) {
-        Cidade percorre = cidade;
-        ArrayList<Cidade> troca = new ArrayList<Cidade>();
-        int num = 0;
+    //fução que faz a troca de cidade e atribui poder, cidade anterio e ciadade atual
+    // provissorio logo iremos dividir essa funcionalidades
 
-        while (true) {
-            int k = 1;
-            System.out.println("Cidade Atual:  " + percorre.getNomeCidade() + "\n");
-            for (Aresta j : percorre.getArestasEntrada()) {
-                System.out.println(k + ". " + j.getFim().getNomeCidade());
-                troca.add(j.getFim());
-                k++;
-            }
-            Scanner resposta = new Scanner(System.in);
-            num = resposta.nextInt();
-            percorre = troca.get(num - 1);
-            troca.clear();
+    public Cidade buscaCorreta(Cidade cidade) {
+        Cidade percorre = cidade;
+        ArrayList<Aresta> troca = new ArrayList<Aresta>();
+        int num =0;
+        int k = 1;
+        System.out.println("Cidade Atual:  " + percorre.getNomeCidade() + "\n");
+        // buscando nas lista de arresta de fim as referecias para a cidades que fazem fronteiras com a
+        // cidade passada no metodo
+        for (Aresta j : percorre.getArestasEntrada()) {
+            System.out.println(k + ". " + j.getFim().getNomeCidade() + " - " + j.getPeso() + " de poder");
+            troca.add(j);
+            k++;
         }
+        Scanner resposta = new Scanner(System.in);
+        try {
+            num = resposta.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida. Digite um número inteiro.");
+        }  
+        // ecolhnedo uma cidade das enumeradas na tela
+        percorre = troca.get(num - 1).getFim();
+        Maxwell.getInstance().setProximaCidade(percorre);
+        // atribuidao a cidade anterio aos atributos de maxwell
+        Maxwell.getInstance().setCidadeAnterior(cidade.getNomeCidade());
+        // atruibuindo o poder da cidade aos atributos de maxwell
+        Maxwell.getInstance().setProximaCidadePoder(troca.get(num - 1).getPeso());
+        Maxwell.getInstance().setPoder(Maxwell.getInstance().getPoder() + troca.get(num - 1).getPeso());
+        return percorre;
+
     }
+
 }

@@ -1,43 +1,64 @@
-package Maxwell;
 
 public class Maxwell {
     private static Maxwell instance;
-    private int poder;
-    private int moedas;
+    private int poder = 0;
+    private int moedas = 3;
     private String cidadeAnterior;
-    private int limitePoder;
+    private int limitePoder = 7;
     private boolean isDead;
     private boolean missao_1;
     private boolean missao_2;
     private boolean missao_3;
     private Cidade cidadeAtual;
+    private Cidade proximaCidade;
+    private int proximaCidadePoder;
 
-    private Maxwell() {
+    public int getProximaCidadePoder() {
+        return proximaCidadePoder;
     }
-    //Transforma Maxwell em uma instância única para todo o código
+
+    public void setProximaCidadePoder(int proximaCidadePoder) {
+        this.proximaCidadePoder = proximaCidadePoder;
+    }
+
+    public Cidade getProximaCidade() {
+        return proximaCidade;
+    }
+
+    public void setProximaCidade(Cidade proximaCidade) {
+        this.proximaCidade = proximaCidade;
+    }
+
+    // Transforma Maxwell em uma instância única para todo o código
     public static Maxwell getInstance() {
         if (instance == null) {
+
             instance = new Maxwell();
         }
         return instance;
     }
-    
+
     public Cidade getCidadeAtual() {
         return cidadeAtual;
     }
+
     public void setCidadeAtual(Cidade cidadeAtual) {
         this.cidadeAtual = cidadeAtual;
     }
 
     public boolean isDead() {
-        if (getInstance().getMoedas() <= 0){
+        if (getInstance().getMoedas() <= 0) {
+            System.out.println("Você ficou sem moedas. Tente novamente");
             return true;
-        }
-        else if (getInstance().getPoder()>getInstance().getLimitePoder()){
+
+        } else if (getInstance().getPoder() > getInstance().getLimitePoder()) {
+
+            System.out.println("Seu poder excedeu o limite da joia e Maxwell não aguentou. Tente novamente");
             return true;
         }
         return false;
     }
+
     public void setDead(boolean isDead) {
         this.isDead = isDead;
     }
@@ -54,16 +75,16 @@ public class Maxwell {
         return poder;
     }
 
-    public void setPoder(int poder) {
-        this.poder = poder;
+    public void setPoder(int poderAtualizado) {
+        this.poder = poderAtualizado;
     }
 
     public int getMoedas() {
         return moedas;
     }
 
-    public void setMoedas(int moedas) {
-        this.moedas = moedas;
+    public void setMoedas(int moedasatuais) {
+        this.moedas = moedasatuais;
     }
 
     public String getCidadeAnterior() {
@@ -97,4 +118,13 @@ public class Maxwell {
     public void setMissao_3(boolean missao_3) {
         this.missao_3 = missao_3;
     }
-} 
+
+    // função para verificar os atribustos de maxwell
+    public void informacao() {
+        System.out.println("Quantidade moedas :" + getMoedas());
+        System.out.println("Quantidade Limite poder : " + getLimitePoder());
+        System.out.println("Quantidade  poder :" + getPoder());
+        System.out.println("Cidade anterior: " + getCidadeAnterior());
+        System.out.println("Cidade Atual: " + getCidadeAtual());
+    }
+}
