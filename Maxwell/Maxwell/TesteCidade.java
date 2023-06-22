@@ -128,8 +128,6 @@ public class TesteCidade {
             if (m == 0) {
                 corre = grafo.buscaCorreta(ubud);
             } else {
-                // Verificar se Maxwell está vivo
-                Maxwell.getInstance().isDead();
                 // Pagar pedágio ao chegar a cidade (uma moeda)
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
                 // Verificar se a cidade possui missão
@@ -138,12 +136,11 @@ public class TesteCidade {
                 Missoes.completarMissao(corre);
                 // Falar com o Mercador
                 System.out.println(mercador.informacoesMercador()); 
-                mercador.trocaMercador();
+                mercador.trocaMercador();   
                 // Ir para outra cidade
                 corre = grafo.buscaCorreta(corre);
             }
             m++;
-
-        } while (true);
+        } while (Maxwell.getInstance().isDead() == false);
     }
 }
