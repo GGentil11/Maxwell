@@ -1,7 +1,6 @@
-package br.com.pi.the.icev.ed.projetofinal;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Grafo {
@@ -18,7 +17,7 @@ public class Grafo {
         this.vertices.add(novoVertice);
     }
 
-    public void adicionarAresta(Double peso, Cidade dadoInicio, Cidade dadoFim) {
+    public void adicionarAresta(int peso, Cidade dadoInicio, Cidade dadoFim) {
         Cidade inicio = dadoInicio;
         Cidade fim = dadoFim;
         Aresta aresta = new Aresta(peso, inicio, fim);
@@ -27,7 +26,7 @@ public class Grafo {
         this.arestas.add(aresta);
     }
 
-    public void busca_largura() {
+    public void buscaLargura() {
         ArrayList<Cidade> marcados = new ArrayList<>();
         ArrayList<Cidade> fila = new ArrayList<>();
         Cidade primeiro = this.vertices.get(0);
@@ -36,9 +35,9 @@ public class Grafo {
         fila.add(primeiro);
 
         while (fila.size() > 0) {
-            Cidade vistado = fila.get(0);
-            for (int i = 0; i < vistado.getArestasSaida().size(); i++) {
-                Cidade proximo = vistado.getArestasSaida().get(i).getFim();
+            Cidade visitada = fila.get(0);
+            for (int i = 0; i < visitada.getArestasSaida().size(); i++) {
+                Cidade proximo = visitada.getArestasSaida().get(i).getFim();
                 if (!marcados.contains(proximo)) {
                     marcados.add(proximo);
                     System.out.println(primeiro.getNomeCidade());
@@ -46,30 +45,43 @@ public class Grafo {
                 }
             }
             fila.remove(0);
-
         }
-
     }
+    //fução que faz a troca de cidade e atribui poder, cidade anterio e ciadade atual
+    // provissorio logo iremos dividir essa funcionalidades
 
-    public void busca_corrreta(Cidade c) {
-        Cidade pecorre = c;
-        ArrayList<Cidade> troca = new ArrayList();
-        Scanner entrada = new Scanner(System.in);
-        int num = 0;
-
-        while (true) {
-            int k = 1;
-            System.out.println("Cidade Atual:  " + pecorre.getNomeCidade() + "\n");
-            for (Aresta j : pecorre.getArestasEntrada()) {
-                System.out.println(k + ". " + j.getFim().getNomeCidade());
-                troca.add(j.getFim());
-                k++;
-            }
-            num = entrada.nextInt();
-            pecorre = troca.get(num - 1);
-            troca.clear();
-
+    public Cidade buscaCorreta(Cidade cidade) {
+        Cidade percorre = cidade;
+        ArrayList<Aresta> troca = new ArrayList<Aresta>();
+        int num =0;
+        int k = 1;
+        System.out.println("Cidade Atual:  " + percorre.getNomeCidade() + "\n");
+        // buscando nas lista de arresta de fim as referecias para a cidades que fazem fronteiras com a
+        // cidade passada no metodo
+        for (Aresta j : percorre.getArestasEntrada()) {
+            System.out.println(k + ". " + j.getFim().getNomeCidade());
+            troca.add(j);
+            k++;
         }
+        Scanner resposta = new Scanner(System.in);
+        ;
+        try {
+             num = resposta.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida. Digite um número inteiro.");
+        }
+
+
+    
+
+    
+        // ecolhnedo uma cidade das enumeradas na tela
+        percorre = troca.get(num - 1).getFim();
+        // atribuidao a cidade anterio aos atributos de maxwell
+        Maxwell.getInstance().setCidadeAnterior(cidade.getNomeCidade());
+        // atruibuindo o poder da cidade aos atributos de maxwell
+        Maxwell.getInstance().setPoder(Maxwell.getInstance().getPoder() + troca.get(num - 1).getPeso());
+        return percorre;
 
     }
 

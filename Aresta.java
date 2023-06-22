@@ -1,21 +1,20 @@
-package Maxwell;
 
 public class Aresta {
-    private Double peso;
+    private int peso;
     private Cidade inicio;
     private Cidade fim;
     
-    public Aresta(Double peso, Cidade inicio, Cidade fim){
+    public Aresta(int peso, Cidade inicio, Cidade fim){
         this.peso = peso;
         this.inicio = inicio;
         this.fim = fim;
     }
 
-    public Double getPeso() {
+    public int getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso(int peso) {
         this.peso = peso;
     }
 

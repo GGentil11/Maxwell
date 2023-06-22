@@ -1,4 +1,4 @@
-package Maxwell;
+
 
 import java.util.ArrayList;
 
@@ -7,15 +7,14 @@ public class Cidade {
     boolean isMissao;
     private ArrayList<Aresta> arestasEntrada;
     private ArrayList<Aresta> arestasSaida;
+    private boolean missaoAceita;
 
     public Cidade(String nomeCidade, boolean isMissao) {
         this.nomeCidade = nomeCidade;
         this.isMissao = isMissao;
         this.arestasEntrada = new ArrayList<Aresta>();
         this.arestasSaida = new ArrayList<Aresta>();
-      
-        
-
+        this.missaoAceita = false;
     }
 
     public Cidade(Cidade cidade_adici) {
@@ -50,5 +49,11 @@ public class Cidade {
     public ArrayList<Aresta> getArestasSaida() {
         return arestasSaida;
     }
-    
+    public boolean isMissaoAceita() {
+        return missaoAceita;
+    }
+
+    public void setMissaoAceita(boolean missaoAceita) {
+        this.missaoAceita = missaoAceita;
+    }
 }
