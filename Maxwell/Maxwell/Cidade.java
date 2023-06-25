@@ -8,7 +8,7 @@ public class Cidade {
     private ArrayList<Aresta> arestasEntrada;
     private ArrayList<Aresta> arestasSaida;
     private boolean missaoAceita;
-
+    //Inicializa a Cidade
     public Cidade(String nomeCidade, boolean isMissao) {
         this.nomeCidade = nomeCidade;
         this.isMissao = isMissao;
@@ -19,7 +19,7 @@ public class Cidade {
 
     public Cidade(Cidade cidade_adici) {
     }
-
+    //Getters e Setters
     public String getNomeCidade() {
         return nomeCidade;
     }
@@ -49,6 +49,7 @@ public class Cidade {
     public ArrayList<Aresta> getArestasSaida() {
         return arestasSaida;
     }
+    
     public boolean isMissaoAceita() {
         return missaoAceita;
     }

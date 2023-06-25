@@ -1,17 +1,67 @@
 
 public class Maxwell {
-    private static Maxwell instance;
+    private static Maxwell instancia;
+    private boolean isDead;
+    private boolean isGanhou;
+
     private int poder = 0;
     private int moedas = 3;
-    private String cidadeAnterior;
     private int limitePoder = 7;
-    private boolean isDead;
+    private String cidadeAnterior;  
     private boolean missao_1;
     private boolean missao_2;
     private boolean missao_3;
     private Cidade cidadeAtual;
     private Cidade proximaCidade;
     private int proximaCidadePoder;
+
+    // Transforma Maxwell em uma instância única para todo o código
+    public static Maxwell getInstance() {
+        if (instancia == null) {
+            instancia = new Maxwell();
+        }
+        return instancia;
+    }
+    // Verifica se Maxwell chegou ao seu destino e determina a recompensa
+    public boolean isGanhou() {
+        if (proximaCidade.getNomeCidade().equals("Nargumun")){
+            if (getMoedas() > 10){
+                System.out.println("Parabéns por carregar a jóia até seu destino!");
+                System.out.println("Você foi nomeado Rei de Nargumun!");
+            } else if (getMoedas() >= 6){
+                System.out.println("Parabéns por carregar a jóia até seu destino!");
+                System.out.println("Você foi nomeado Lorde de Nargumun!");
+            }
+            else{
+                System.out.println("Parabéns por carregar a jóia até seu destino!");
+                System.out.println("Você foi nomeado Servo da Coroa de Nargumun!");
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public void setGanhou(boolean isGanhou) {
+        this.isGanhou = isGanhou;
+    }
+    // Verifica se Maxwell morreu conforme as regras do jogo
+    public boolean isDead() {
+        if (getInstance().getMoedas() <= 0) {
+            System.out.println("Você ficou sem moedas. Tente novamente");
+            return true;
+
+        } else if (getInstance().getPoder() > getInstance().getLimitePoder()) {
+
+            System.out.println("Seu poder excedeu o limite da joia e Maxwell não aguentou. Tente novamente");
+            return true;
+        }
+        return false;
+    }
+
+    //Getters e Setters dos atributos restantes
+    public void setDead(boolean isDead) {
+        this.isDead = isDead;
+    }
 
     public int getProximaCidadePoder() {
         return proximaCidadePoder;
@@ -29,38 +79,12 @@ public class Maxwell {
         this.proximaCidade = proximaCidade;
     }
 
-    // Transforma Maxwell em uma instância única para todo o código
-    public static Maxwell getInstance() {
-        if (instance == null) {
-
-            instance = new Maxwell();
-        }
-        return instance;
-    }
-
     public Cidade getCidadeAtual() {
         return cidadeAtual;
     }
 
     public void setCidadeAtual(Cidade cidadeAtual) {
         this.cidadeAtual = cidadeAtual;
-    }
-
-    public boolean isDead() {
-        if (getInstance().getMoedas() <= 0) {
-            System.out.println("Você ficou sem moedas. Tente novamente");
-            return true;
-
-        } else if (getInstance().getPoder() > getInstance().getLimitePoder()) {
-
-            System.out.println("Seu poder excedeu o limite da joia e Maxwell não aguentou. Tente novamente");
-            return true;
-        }
-        return false;
-    }
-
-    public void setDead(boolean isDead) {
-        this.isDead = isDead;
     }
 
     public int getLimitePoder() {
@@ -117,14 +141,5 @@ public class Maxwell {
 
     public void setMissao_3(boolean missao_3) {
         this.missao_3 = missao_3;
-    }
-
-    // função para verificar os atribustos de maxwell
-    public void informacao() {
-        System.out.println("Quantidade moedas :" + getMoedas());
-        System.out.println("Quantidade Limite poder : " + getLimitePoder());
-        System.out.println("Quantidade  poder :" + getPoder());
-        System.out.println("Cidade anterior: " + getCidadeAnterior());
-        System.out.println("Cidade Atual: " + getCidadeAtual());
     }
 }

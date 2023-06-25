@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
 public class Mercador {
-
+    //Inicializa o Mercador
     public Mercador() {
-
     }
-
+    //Métodos para evitar que o código fique muito verboso
     public int verificarMoedas() {
         return Maxwell.getInstance().getMoedas();
     }
@@ -13,7 +12,7 @@ public class Mercador {
     public String verificarCidadeAnterior() {
         return Maxwell.getInstance().getCidadeAnterior();
     }
-
+    // Verifica as condições do Maxwell para realizar a troca
     public void trocarMoedasPorPoder(String resposta) {
         if (Maxwell.getInstance().getMoedas() < 5){
             if (Maxwell.getInstance().getProximaCidadePoder() < 3 && resposta.equals("S")){
@@ -41,7 +40,7 @@ public class Mercador {
                 Maxwell.getInstance().setLimitePoder(Maxwell.getInstance().getLimitePoder() + 2);
             }
             else if (Maxwell.getInstance().getProximaCidadePoder() < 3 && resposta.equals("N")){
-                System.out.println("Você peerdeu duas moedas");
+                System.out.println("Você perdeu duas moedas");
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 2);
             }
             else if (Maxwell.getInstance().getProximaCidadePoder() >= 3 && resposta.equals("S")){
@@ -55,21 +54,27 @@ public class Mercador {
             }
         }
     }
-
-    public String informacoesMercador(){
-        return "----------------------------------------------------------"
-                + "\nOlá viajante!"
-                + "\nVocê veio da Cidade: " + verificarCidadeAnterior()
-                + "\nPara onde você deseja ir?";
+    //Introdução do Mercador
+    public void informacoesMercador() throws InterruptedException{
+        System.out.println("----------------------------------------------------------"); 
+        System.out.println("Mercador:");
+        System.out.println("    Olá viajante!");
+        Thread.sleep(1000);
+        System.out.println("    Vejo que você veio de " + verificarCidadeAnterior() + " e que irá a " + Maxwell.getInstance().getProximaCidade().getNomeCidade() +".");
+        System.out.println("    Irei verificar seus status...");
+        Thread.sleep(2000);
+        System.out.println("    Vejo que você possui " + verificarMoedas() +" moedas. Além de " + Maxwell.getInstance().getPoder() +" de poder.");
+        Thread.sleep(1000);
+        System.out.println("    Cuidado para não se sobrecarregar!");
+        System.out.println("    Lembre-se que seu limite é de " + Maxwell.getInstance().getLimitePoder() +" de poder.");
     }
-    public void trocaMercador(){
-        System.out.println("Então você irá a " + Maxwell.getInstance().getProximaCidade().getNomeCidade());
-        System.out.println("E você possui " + verificarMoedas() +" moedas");
-        System.out.println("E você possui " + Maxwell.getInstance().getPoder() +" de poder");
-        System.out.println("Gostaria de fazer uma troca? (S/N)");
-
+    //O Mercador oferece uma troca
+    public void trocaMercador() throws InterruptedException{
+        Thread.sleep(1000);
+        System.out.println("    Gostaria de fazer uma troca? (S/N)");
         Scanner input = new Scanner(System.in);
         String resposta = input.nextLine().toUpperCase();
+
         while (!resposta.equals("S") && !resposta.equals("N")) {
                     System.out.println("Somente S/N");
                     resposta = input.nextLine().toUpperCase();
@@ -83,17 +88,4 @@ public class Mercador {
                 }
         System.out.println("----------------------------------------------------------");
     }
-    /* 
-    @Override
-    public String toString() {
-        return "----------------------------------------------------------"
-                + "\nOlá viajante!"
-                + "\nVocê veio da Cidade: " + verificarCidadeAnterior()
-                + "\nSeu Limite de Poder é de: " + Maxwell.getInstance().getLimitePoder()
-                + "\nVocê possui " + trocarMoedasPorPoder() + " de poder" 
-                + "\nVocê possui " + verificarMoedas() +" moedas"
-                + "\nPara onde você deseja ir?"
-                + "\n----------------------------------------------------------";
-    }
-    */
 }
