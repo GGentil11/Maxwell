@@ -11,6 +11,7 @@ public class Maxwell {
     private boolean missao_1;
     private boolean missao_2;
     private boolean missao_3;
+    private boolean emMissao;
     private Cidade cidadeAtual;
     private Cidade proximaCidade;
     private int proximaCidadePoder;
@@ -142,4 +143,12 @@ public class Maxwell {
     public void setMissao_3(boolean missao_3) {
         this.missao_3 = missao_3;
     }
+
+    public boolean isEmMissao() {
+        return emMissao;
+    }
+    public void setEmMissao(boolean emMissao) {
+        this.emMissao = emMissao;
+    }
+    
 }

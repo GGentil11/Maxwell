@@ -13,6 +13,9 @@ public class Missoes {
             if (cidade.isMissaoAceita()) {
                 System.out.println("Você já aceitou essa missão anteriormente.");
                 return;
+            } else if (Maxwell.getInstance().isEmMissao()){
+                System.out.println("Você só pode fazer uma missão por vez.");
+                return;
             } else if (cidade.getNomeCidade().equals("Kingdom of Kalb")) {
                 System.out.println("Missão: Vá até a cidade de Grand Duchy of Smalia e receba as Luvas do Poder.");
                 System.out.println("Prêmio:\n ->2 Moedas de transporte\n ->O limiar de poder da joia aumenta em 2 pontos");
@@ -28,6 +31,7 @@ public class Missoes {
                 }
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_1(true);
                     cidade.setMissaoAceita(true);
 
@@ -48,6 +52,7 @@ public class Missoes {
                 }
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_2(true);
                     cidade.setMissaoAceita(true);
                 } else if (resposta.equals("N")) {
@@ -68,6 +73,7 @@ public class Missoes {
 
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_3(true);
                     cidade.setMissaoAceita(true);
                 } else if (resposta.equals("N")) {
@@ -83,6 +89,7 @@ public class Missoes {
             System.out.println("Parabéns por Completar a missão");
             System.out.println("Prêmio:\n ->2 Moedas de transporte\n ->O limiar de poder da joia aumenta em 2 pontos");
 
+            Maxwell.getInstance().setEmMissao(false);
             Maxwell.getInstance().setMissao_1(false);
             // Definir as recompensas
             int moedasTotais = Maxwell.getInstance().getMoedas() + 2;
@@ -94,6 +101,7 @@ public class Missoes {
             System.out.println("Parabéns por Completar a missão");
             System.out.println("Prêmio:\n ->3 Moedas de transporte\n ->O limiar de poder da joia aumenta em 1 pontos");
 
+            Maxwell.getInstance().setEmMissao(false);
             Maxwell.getInstance().setMissao_2(false);
             // Definir as recompensas
             int moedasTotais = Maxwell.getInstance().getMoedas() + 3;
@@ -105,6 +113,7 @@ public class Missoes {
             System.out.println("Parabéns por Completar a missão");
             System.out.println("Prêmio:\n ->10 Moedas de transporte\n ->O limiar de poder da joia cai em 4 pontos");
 
+            Maxwell.getInstance().setEmMissao(false);
             Maxwell.getInstance().setMissao_3(false);
             // Definir as recompensas
             int moedasTotais = Maxwell.getInstance().getMoedas() + 10;
@@ -131,7 +140,7 @@ public class Missoes {
         if (missoesAtivas.isEmpty()) {
             System.out.println("Nenhuma missão ativa no momento.");
         } else {
-            System.out.println("Missões Ativas:");
+            System.out.println("Missão Ativa:");
             for (String missao : missoesAtivas) {
                 System.out.println("- " + missao);
             }
