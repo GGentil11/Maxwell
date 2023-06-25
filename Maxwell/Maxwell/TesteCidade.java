@@ -1,7 +1,8 @@
 
 public class TesteCidade {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        //Cria as cidades
         Grafo grafo = new Grafo();
         Cidade ubud = new Cidade("Ubud", false);
         Cidade kingdomOfLegmod = new Cidade("Kingdom of Legmod", false);
@@ -21,6 +22,7 @@ public class TesteCidade {
         Cidade chandirSultinate = new Cidade("Chandir Sultinate", false);
         Cidade principalityOfKasya = new Cidade("Principality of Kasya", false);
 
+        // Adiciona as cidades no vértice do grafo
         grafo.adicionarVertice(ubud);
         grafo.adicionarVertice(kingdomOfLegmod);
         grafo.adicionarVertice(principalityOfNekikh);
@@ -39,7 +41,7 @@ public class TesteCidade {
         grafo.adicionarVertice(chandirSultinate);
         grafo.adicionarVertice(principalityOfKasya);
 
-        // Saída das cidades
+        // Conecta as Cidades através das Arestas e determina o peso(poder) da aresta
         // Ubud
         grafo.adicionarAresta(2, ubud, kingdomOfLegmod);
         grafo.adicionarAresta(1, ubud, principalityOfNekikh);
@@ -119,28 +121,30 @@ public class TesteCidade {
         grafo.adicionarAresta(1, principalityOfKasya, chandirSultinate);
 
 
-        // variaveis de inicilização da chamada
+        // Inicializa as variáveis necessárias
         int m = 0;
         Cidade corre = null;
         Mercador mercador = new Mercador();
         do {
-            // Primeira chamada só trocar de cidade
+            // Definir Ubud como a cidade inicial
             if (m == 0) {
-                corre = grafo.buscaCorreta(ubud);
+                corre = grafo.buscaLargura(ubud);
             } else {
                 // Pagar pedágio ao chegar a cidade (uma moeda)
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
+                // Verificar se Maxwell possui alguma missão
+                Missoes.mostrarMissoesAtivas();
                 // Verificar se a cidade possui missão
                 Missoes.verificarMissao(corre);
                 // Verficar se completou alguma missão
                 Missoes.completarMissao(corre);
                 // Falar com o Mercador
-                System.out.println(mercador.informacoesMercador()); 
+                mercador.informacoesMercador();
                 mercador.trocaMercador();   
                 // Ir para outra cidade
-                corre = grafo.buscaCorreta(corre);
+                corre = grafo.buscaLargura(corre);
             }
             m++;
-        } while (Maxwell.getInstance().isDead() == false);
+        } while (Maxwell.getInstance().isDead() == false && Maxwell.getInstance().isGanhou() == false);
     }
 }
