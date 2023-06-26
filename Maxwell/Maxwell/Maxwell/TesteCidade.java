@@ -128,7 +128,7 @@ public class TesteCidade {
         do {
             // Definir Ubud como a cidade inicial
             if (m == 0) {
-                corre = grafo.buscaLargura(ubud);
+                corre = grafo.buscaLargura(aymarLeague);
             } else {
                 // Pagar pedágio ao chegar a cidade (uma moeda)
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
