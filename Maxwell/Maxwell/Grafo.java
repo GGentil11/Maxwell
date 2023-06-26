@@ -45,7 +45,7 @@ public class Grafo {
             try {
                 System.out.print("Digite o número correspondente ao seu destino: ");
                 num = resposta.nextInt();
-                if (num > 0 && num <= k) {
+                if (num > 0 && num <= k-1) {
                     entradaValida = true;
                 } else {
                     System.out.println("Número fora do intervalo válido. Tente novamente.");
