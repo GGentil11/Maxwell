@@ -7,8 +7,8 @@ public class Maxwell {
     private boolean isGanhou;
 
     private int poder = 0;
-    private int moedas = 30;
-    private int limitePoder = 70;
+    private int moedas = 3;
+    private int limitePoder = 7;
     private String cidadeAnterior;
     private boolean missao_1;
     private boolean missao_2;
