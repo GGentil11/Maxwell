@@ -1,6 +1,13 @@
-
+/**
+ * Classe principal que inicializa o grafo com suas cidades e arestas, e executa o restante do código em um loop.
+ */
 public class TesteCidade {
-
+    /**
+     * Método principal que inicia a execução do programa.
+     *
+     * @param args Os argumentos de linha de comando.
+     * @throws InterruptedException Se ocorrer uma interrupção durante a execução do programa.
+     */
     public static void main(String[] args) throws InterruptedException {
         //Cria as cidades
         Grafo grafo = new Grafo();
@@ -128,7 +135,7 @@ public class TesteCidade {
         do {
             // Definir Ubud como a cidade inicial
             if (m == 0) {
-                corre = grafo.buscaLargura(ubud);
+                corre = grafo.buscaLargura(aymarLeague);
             } else {
                 // Pagar pedágio ao chegar a cidade (uma moeda)
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
