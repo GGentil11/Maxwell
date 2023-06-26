@@ -26,6 +26,7 @@ public class Maxwell {
     // Verifica se Maxwell chegou ao seu destino e determina a recompensa
     public boolean isGanhou() {
         if (proximaCidade.getNomeCidade().equals("Nargumun")){
+            System.out.println("----------------------------------------------------------"); 
             if (getMoedas() > 10){
                 System.out.println("Parabéns por carregar a jóia até seu destino!");
                 System.out.println("Você foi nomeado Rei de Nargumun!");
@@ -48,11 +49,12 @@ public class Maxwell {
     // Verifica se Maxwell morreu conforme as regras do jogo
     public boolean isDead() {
         if (getInstance().getMoedas() <= 0) {
+            System.out.println("----------------------------------------------------------"); 
             System.out.println("Você ficou sem moedas. Tente novamente");
             return true;
 
         } else if (getInstance().getPoder() > getInstance().getLimitePoder()) {
-
+            System.out.println("----------------------------------------------------------"); 
             System.out.println("Seu poder excedeu o limite da joia e Maxwell não aguentou. Tente novamente");
             return true;
         }

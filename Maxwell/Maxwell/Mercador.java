@@ -71,21 +71,26 @@ public class Mercador {
     //O Mercador oferece uma troca
     public void trocaMercador() throws InterruptedException{
         Thread.sleep(1000);
-        System.out.println("    Gostaria de fazer uma troca? (S/N)");
         Scanner input = new Scanner(System.in);
-        String resposta = input.nextLine().toUpperCase();
+        String resposta;
 
-        while (!resposta.equals("S") && !resposta.equals("N")) {
-                    System.out.println("Somente S/N");
-                    resposta = input.nextLine().toUpperCase();
-                }
-                if (resposta.equals("S")) {
-                    System.out.println("Troca aceita!");
-                    trocarMoedasPorPoder(resposta);
-                } else if (resposta.equals("N")) {
-                    System.out.println("Troca recusada!");
-                    trocarMoedasPorPoder(resposta);
-                }
+        do {
+            System.out.print("    Gostaria de fazer uma troca? (S/N)");
+            resposta = input.nextLine().toUpperCase();
+
+            if (!resposta.equals("S") && !resposta.equals("N")) {
+                System.out.println("Entrada inválida. Digite S ou N.");
+            }
+        } while (!resposta.equals("S") && !resposta.equals("N"));
+
+        if (resposta.equals("S")) {
+            System.out.println("Troca aceita!");
+            trocarMoedasPorPoder(resposta);
+        } else if (resposta.equals("N")) {
+            System.out.println("Troca recusada!");
+            trocarMoedasPorPoder(resposta);
+        }
+
         System.out.println("----------------------------------------------------------");
     }
 }

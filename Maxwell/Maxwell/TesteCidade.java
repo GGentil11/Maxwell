@@ -134,6 +134,8 @@ public class TesteCidade {
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
                 // Verificar se Maxwell possui alguma missão
                 Missoes.mostrarMissoesAtivas();
+                // Verificar se o jogador deseja desistir da missão
+                Missoes.desistirMissao();
                 // Verificar se a cidade possui missão
                 Missoes.verificarMissao(corre);
                 // Verficar se completou alguma missão
@@ -146,5 +148,6 @@ public class TesteCidade {
             }
             m++;
         } while (Maxwell.getInstance().isDead() == false && Maxwell.getInstance().isGanhou() == false);
+        
     }
 }

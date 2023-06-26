@@ -40,11 +40,21 @@ public class Grafo {
             k++;
         }
         Scanner resposta = new Scanner(System.in);
-        try {
-            num = resposta.nextInt();
-        } catch (InputMismatchException e) {
-            System.out.println("Entrada inválida. Digite um número inteiro.");
-        }  
+        boolean entradaValida = false;
+        do {
+            try {
+                System.out.print("Digite o número correspondente ao seu destino: ");
+                num = resposta.nextInt();
+                if (num > 0 && num <= k) {
+                    entradaValida = true;
+                } else {
+                    System.out.println("Número fora do intervalo válido. Tente novamente.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida.");
+                resposta.nextLine();
+            }
+        } while (!entradaValida);
         percorre = troca.get(num - 1).getFim();
 
         /* Atruibuindo a próxima cidade(com o poder), a cidade anterior 
@@ -60,7 +70,5 @@ public class Grafo {
             Maxwell.getInstance().setPoder(poderAtualizado);
         }
         return percorre;
-
     }
-
 }
