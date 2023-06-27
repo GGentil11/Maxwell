@@ -76,7 +76,6 @@ public class Mercador {
      * @throws InterruptedException Se ocorrer uma interrupção durante a execução da thread.
      */
     public void informacoesMercador() throws InterruptedException {
-        System.out.println("----------------------------------------------------------");
         System.out.println("Mercador:");
         System.out.println("    Olá viajante!");
         Thread.sleep(1000);
