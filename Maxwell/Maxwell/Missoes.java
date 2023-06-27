@@ -175,12 +175,14 @@ public class Missoes {
         if (missoesAtivas.isEmpty()) {
             System.out.println("----------------------------------------------------------");
             System.out.println("Nenhuma missão ativa no momento.");
+            System.out.println("----------------------------------------------------------");
         } else {
             System.out.println("----------------------------------------------------------");
             System.out.println("Missão Ativa:");
             for (String missao : missoesAtivas) {
                 System.out.println("- " + missao);
             }
+            System.out.println("----------------------------------------------------------");
         }
     }
 
@@ -235,8 +237,6 @@ public class Missoes {
             } else if (resposta.equals("N")) {
                 System.out.println("Você decidiu continuar na missão!");
             }
-        } else {
-            System.out.println("Você não está em uma missão.");
         }
     }
 }
