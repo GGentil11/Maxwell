@@ -45,6 +45,7 @@ public class Missoes {
 
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() + 4);
                     Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_1(true);
                     cidade.setMissaoAceita(true);
@@ -71,6 +72,7 @@ public class Missoes {
 
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() + 6);
                     Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_2(true);
                     cidade.setMissaoAceita(true);
@@ -96,6 +98,7 @@ public class Missoes {
 
                 if (resposta.equals("S")) {
                     System.out.println("Missão aceita!");
+                    Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() + 1);
                     Maxwell.getInstance().setEmMissao(true);
                     Maxwell.getInstance().setMissao_3(true);
                     cidade.setMissaoAceita(true);

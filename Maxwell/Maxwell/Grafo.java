@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * A classe Grafo representa o mapa do jogo, onde o jogador pode visualizar e escolher a próxima cidade para Maxwell se locomover.
- * O grafo consiste em uma coleção de vértices (cidades) e arestas que representam as conexões entre as cidades.
+ * O grafo consiste numa coleção de vértices (cidades) e arestas que representam as conexões entre as cidades.
  */
 public class Grafo {
     private ArrayList<Cidade> vertices;
@@ -46,7 +46,7 @@ public class Grafo {
 
     /**
      * Realiza uma busca em largura no grafo a partir de uma cidade específica para determinar as cidades fronteiriças.
-     * Permite que o jogador escolha sua próxima cidade de destino.
+     * Permite que o jogador escolha a sua próxima cidade de destino.
      *
      * @param cidade A cidade de partida para a busca em largura.
      * @return A próxima cidade escolhida pelo jogador.

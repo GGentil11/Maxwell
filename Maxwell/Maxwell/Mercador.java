@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * A classe Mercador representa o personagem mercador do jogo, com quem o jogador, representado por Maxwell, pode interagir em uma cidade. O mercador oferece a opção de trocar moedas por poder na joia e realiza essa troca com base nas condições do jogador.
+ * A classe Mercador representa o personagem mercador do jogo, com quem o jogador, representado por Maxwell, pode interagir numa cidade. O mercador oferece a opção de trocar moedas por poder na joia e realiza essa troca com base nas condições do jogador.
  */
 public class Mercador {
 

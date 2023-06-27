@@ -1,5 +1,5 @@
 /**
- * A classe Aresta representa a conexão entre duas cidades em um grafo. Ela define o peso da aresta, bem como as cidades de início e fim que a aresta conecta.
+ * A classe Aresta representa a conexão entre duas cidades num grafo. Ela define o peso da aresta, bem como as cidades de início e fim que a aresta conecta.
  */
 public class Aresta {
     private int peso;
