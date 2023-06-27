@@ -1,5 +1,5 @@
 /**
- * Classe principal que inicializa o grafo com suas cidades e arestas, e executa o restante do código em um loop.
+ * Classe principal que inicializa o grafo com as suas cidades e arestas, e executa o restante do código num ‘loop’.
  */
 public class TesteCidade {
     /**
@@ -127,15 +127,17 @@ public class TesteCidade {
         // Principality of Kasya
         grafo.adicionarAresta(1, principalityOfKasya, chandirSultinate);
 
-
         // Inicializa as variáveis necessárias
         int m = 0;
         Cidade corre = null;
         Mercador mercador = new Mercador();
+        TrilhaSonora trilhaSonora = new TrilhaSonora();
+        trilhaSonora.reproduzirMusica("TrilhaSonora/Musica.wav");
+
         do {
             // Definir Ubud como a cidade inicial
             if (m == 0) {
-                corre = grafo.buscaLargura(aymarLeague);
+                corre = grafo.buscaLargura(ubud);
             } else {
                 // Pagar pedágio ao chegar a cidade (uma moeda)
                 Maxwell.getInstance().setMoedas(Maxwell.getInstance().getMoedas() - 1);
@@ -154,7 +156,7 @@ public class TesteCidade {
                 corre = grafo.buscaLargura(corre);
             }
             m++;
-        } while (Maxwell.getInstance().isDead() == false && Maxwell.getInstance().isGanhou() == false);
-        
+        } while (!Maxwell.getInstance().isDead() && !Maxwell.getInstance().isGanhou());
+        trilhaSonora.pararMusica();
     }
 }

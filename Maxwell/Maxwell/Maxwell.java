@@ -7,8 +7,8 @@ public class Maxwell {
     private boolean isGanhou;
 
     private int poder = 0;
-    private int moedas = 30;
-    private int limitePoder = 70;
+    private int moedas = 3;
+    private int limitePoder = 7;
     private String cidadeAnterior;
     private boolean missao_1;
     private boolean missao_2;
@@ -220,7 +220,7 @@ public class Maxwell {
     /**
      * Verifica se a missão 1 está ativa.
      *
-     * @return True se a missão 1 está ativa, False caso contrário.
+     * @return True se a missão 1 está ativa. False caso contrário.
      */
     public boolean isMissao_1() {
         return missao_1;
@@ -272,18 +272,18 @@ public class Maxwell {
     }
 
     /**
-     * Verifica se Maxwell está em uma missão.
+     * Verifica se Maxwell está numa missão.
      *
-     * @return True se Maxwell está em uma missão, False caso contrário.
+     * @return True se Maxwell está numa missão, False caso contrário.
      */
     public boolean isEmMissao() {
         return emMissao;
     }
 
     /**
-     * Define se Maxwell está em uma missão.
+     * Define se Maxwell está numa missão.
      *
-     * @param emMissao True se Maxwell está em uma missão, False caso contrário.
+     * @param emMissao True se Maxwell está numa missão, False caso contrário.
      */
     public void setEmMissao(boolean emMissao) {
         this.emMissao = emMissao;
