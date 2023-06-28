@@ -3,7 +3,7 @@ Repositório voltado para a realização do trabalho final da disciplina Estrutu
 
 
 Participantes do Grupo:
-Gabriel Felipe Baia Gentil
-Luis Eduardo Alencar Melo
-Sarah Ocy de Sousa Medeiros
-Alan da Silva Carneiro
+Gabriel Felipe Baia Gentil/
+Luis Eduardo Alencar Melo/
+Sarah Ocy de Sousa Medeiros/
+Alan da Silva Carneiro/
